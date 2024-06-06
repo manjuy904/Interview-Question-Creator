@@ -1,7 +1,5 @@
 # Interview-Question-Creator
 
-
-
 ## How to run:
 
 1. Create an environment
