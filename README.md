@@ -6,21 +6,21 @@
 
 1. Create an environment
 
-'''bash
+```bash
 conda create -n interview python=3.10 -y
 
-'''
+```
 
 2. Activate the environment
 
-'''bash
+```bash
 conda activate interview
 
-'''
+```
 
 ### GitHub Commands
 
-'''bash
+```bash
 1. git clone https://github.com/ 
 
 2. git add .
@@ -29,4 +29,4 @@ conda activate interview
 
 4. git push origin main
 
-''' 
+``` 
