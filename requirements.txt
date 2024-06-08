@@ -1,0 +1,15 @@
+langchain #if we are using langchain we have to use below libraries as well since langchain is updated now a days
+langchain-community
+langchain-core
+openai
+pypdf
+tiktoken
+aiofiles
+fastapi
+uvicorn
+jinja2
+python-multipart
+PyPDF2
+faiss-cpu
+
+-e . # in order to execute setup.py add this line. this command will run the setup.py and install src as local package
