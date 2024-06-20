@@ -57,19 +57,21 @@ def llm_pipeline(file_path):
     
     document_ques_gen, document_answer_gen = file_processing(file_path)
     
-    LLM_ques_gen_pipeline = ChatOpenAI(
-    model = 'gpt-3.5-turbo',
+    llm_ques_gen_pipeline = ChatOpenAI(
+    model = "gpt-3.5-turbo",
     temperature = 0.3
     )
     
     
     
-    PROMPT_QUESTIONS = PromptTemplate(template=prompt_template, input_variables=['text'])
+    PROMPT_QUESTIONS = PromptTemplate(template=prompt_template, input_variables=["text"])
     
     
-    REFINE_PROMPT_QUESTIONS = PromptTemplate(template=refine_template, input_variables=["existing_answer", "text"])
+    REFINE_PROMPT_QUESTIONS = PromptTemplate(input_variables=["existing_answer", "text"],
+        template=refine_template,)
     
-    ques_gen_chain = load_summarize_chain(llm = LLM_ques_gen_pipeline, # LLM Wrapper
+    
+    ques_gen_chain = load_summarize_chain(llm = llm_ques_gen_pipeline, # LLM Wrapper
                                       chain_type = "refine",
                                       verbose = True, # Whatever output it will show , wil show in terminal
                                       question_prompt = PROMPT_QUESTIONS,
@@ -83,7 +85,7 @@ def llm_pipeline(file_path):
     
     llm_answer_gen = ChatOpenAI(temperature=0.1, model="gpt-3.5-turbo")
     
-    ques_list = ques.split("\n\n")
+    ques_list = ques.split("\n")
     
     filtered_ques_list = [element for element in ques_list if element.endswith('?') or element.endswith('.')]
     
